@@ -1,4 +1,5 @@
 ﻿<?php include('header.php'); ?>
+
 <h2>Bienvenue</h2>
 <p>
     Bienvenue sur <em>Social Sondage</em>, ici, vous pourrez créer et participer
