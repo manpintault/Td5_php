@@ -14,7 +14,7 @@ if ($logged) {
 ?>
 <html>
     <head>
-        <meta http-equiv ="Content-Type " content ="text/html; charset=utf-8"/>
+        <meta http-equiv ="Content-Type " content ="text/html; charset=utf-8"/> 
         <title>Social Sondage</title>
         <link rel="stylesheet" href="dist/css/bootstrap.min.css" />
         <link rel="stylesheet" href="css/style.css" />
