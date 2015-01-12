@@ -1,5 +1,5 @@
 <?php include('header.php'); ?>
-
+ 
 <?php
 $poll = false;
 if (isset($_GET['id'])) {

@@ -1,5 +1,5 @@
 <?php include('header.php'); ?>
-
+ 
 <?php
 if ($currentUser) {
     unset($_SESSION['user']);
