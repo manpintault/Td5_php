@@ -1,14 +1,16 @@
 <?php include('header.php'); ?>
-
+ 
 <h2>Inscription</h2>
 
 <?php
+$sel='dhefgreztt';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (!empty($_POST['login']) && !empty($_POST['password'])) {
+        if (!empty($_POST['login']) && !empty(md5($_POST['password'].$sel))) {
             $req = $pdo->query('SELECT COUNT(*) as nb FROM users WHERE login="'.$_POST['login'].'"')->fetch();
             if ($req['nb'] == 0) {
                 $query = $pdo->prepare('INSERT INTO users (login, password) VALUES (?,?)');
-                $query->execute(array($_POST['login'], $_POST['password']));
+                $query->execute(array($_POST['login'], (md5($_POST['password'].$sel))));
 ?>
 <div class="alert alert-success">
     Félicitations! Vous êtes désormais inscrits.

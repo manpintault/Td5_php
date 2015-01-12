@@ -1,14 +1,15 @@
 <?php include('header.php'); ?>
-
+ 
 <h2>Identification</h2>
 
 <?php
+$sel='dhefgreztt';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (!empty($_POST['login']) && !empty($_POST['password'])) {
+        if (!empty($_POST['login']) && !empty((md5($_POST['password'].$sel)))) {
             $req = $pdo->query('SELECT * FROM users WHERE login="'.$_POST['login'].'"');
             if ($req->rowCount()) {
                 $user = $req->fetch();
-                if ($user['password'] == $_POST['password']) {
+                if ($user['password'] == (md5($_POST['password'].$sel))) {
                     $currentUser = $user;
                     $_SESSION['user'] = $currentUser['id'];
 ?>
