@@ -5,11 +5,11 @@
 $sel='dhefgreztt';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (!empty($_POST['login']) && !empty(md5($_POST['password'].$sel))) {
-            $req = $pdo->query('SELECT COUNT(*) as nb FROM users WHERE login="'.$_POST['login'].'"')->fetch();
+        if (!empty(htmlspecialchars($_POST['login'])) && !empty(md5($_POST['password'].$sel))) {
+            $req = $pdo->query('SELECT COUNT(*) as nb FROM users WHERE login="'.htmlspecialchars($_POST['login']).'"')->fetch();
             if ($req['nb'] == 0) {
                 $query = $pdo->prepare('INSERT INTO users (login, password) VALUES (?,?)');
-                $query->execute(array($_POST['login'], (md5($_POST['password'].$sel))));
+                $query->execute(array(htmlspecialchars($_POST['login']), (md5($_POST['password'].$sel))));
 ?>
 <div class="alert alert-success">
     Félicitations! Vous êtes désormais inscrits.

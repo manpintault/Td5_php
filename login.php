@@ -4,8 +4,8 @@
 <?php
 $sel='dhefgreztt';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-        if (!empty($_POST['login']) && !empty((md5($_POST['password'].$sel)))) {
-            $req = $pdo->query('SELECT * FROM users WHERE login="'.$_POST['login'].'"');
+        if (!empty(htmlspecialchars($_POST['login'])) && !empty((md5($_POST['password'].$sel)))) {
+            $req = $pdo->query('SELECT * FROM users WHERE login="'.htmlspecialchars($_POST['login']).'"');
             if ($req->rowCount()) {
                 $user = $req->fetch();
                 if ($user['password'] == (md5($_POST['password'].$sel))) {
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             } else {
 ?>
 <div class="alert alert-danger">
-    L'utilisateur <?php echo $_POST['login']; ?> n'existe pas.
+    L'utilisateur <?php echo htmlspecialchars($_POST['login']); ?> n'existe pas.
 </div>
 <?php
             }
